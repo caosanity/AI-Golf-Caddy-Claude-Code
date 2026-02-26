@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Golf Caddy</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">⛳ AI Golf Caddy</span>
+      </div>
+
+      <!-- Course Upload -->
+      <section class="sidebar-section">
+        <h3>Course Data</h3>
+        <div id="course-status" class="status-badge status-empty">No course loaded</div>
+        <label class="upload-label" for="csv-input">
+          Upload Course CSV
+          <input type="file" id="csv-input" accept=".csv" hidden />
+        </label>
+      </section>
+
+      <!-- Player Profile -->
+      <section class="sidebar-section">
+        <h3>Player Profile</h3>
+        <form id="profile-form">
+          <label>Handicap
+            <input type="number" id="handicap" step="0.1" placeholder="e.g. 14.2" />
+          </label>
+          <details>
+            <summary>Club Distances (optional)</summary>
+            <div class="club-grid">
+              <label>Driver <input type="number" class="club-dist" data-club="driver" placeholder="240" /></label>
+              <label>3-wood <input type="number" class="club-dist" data-club="3w" placeholder="215" /></label>
+              <label>5-iron <input type="number" class="club-dist" data-club="5i" placeholder="185" /></label>
+              <label>7-iron <input type="number" class="club-dist" data-club="7i" placeholder="160" /></label>
+              <label>9-iron <input type="number" class="club-dist" data-club="9i" placeholder="135" /></label>
+              <label>PW <input type="number" class="club-dist" data-club="PW" placeholder="115" /></label>
+            </div>
+          </details>
+          <button type="submit" class="btn-secondary">Save Profile</button>
+        </form>
+        <div id="profile-status" class="status-badge status-empty">No profile saved</div>
+      </section>
+    </aside>
+
+    <!-- Chat Panel -->
+    <main class="chat-panel">
+      <div class="chat-messages" id="chat-messages">
+        <div class="message message-assistant">
+          <div class="message-content">
+            Welcome! I'm your AI Golf Caddy. To get started:<br/>
+            1. Upload your course CSV in the sidebar.<br/>
+            2. Optionally fill in your player profile.<br/>
+            3. Ask me about any hole — e.g., <em>"How should I play hole 7?"</em>
+          </div>
+        </div>
+      </div>
+      <form class="chat-input-row" id="chat-form">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Ask your caddy... e.g. How should I play hole 14?"
+          autocomplete="off"
+        />
+        <button type="submit" id="send-btn">Send</button>
+      </form>
+    </main>
+
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
